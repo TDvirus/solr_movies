@@ -1,0 +1,502 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>[[#{app.name}]]</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/systemsite/assets/static/css/font.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/systemsite/assets/static/css/limpframwork-car.css}"/>
+    <!--注意需要用双标签进行闭合，即用一对<script></script>-->
+    <script th:src="@{/systemsite/assets/lib/layui/layui.js}"></script>
+
+</head>
+
+<body>
+<!-- 顶部开始 -->
+<div class="container" th:replace="systemsite/m2/pages/common/dayou_header_m2"></div>
+
+<!-- 顶部结束 -->
+
+<!-- 左侧菜单结束 -->
+<!-- 右侧主体开始 -->
+<div class="page-content">
+    <div class="layui-tab tab" lay-filter="wenav_tab" id="WeTabTip" lay-allowclose="true">
+
+        <div class="layui-tab-content" style="overflow:auto">
+            <div class="layui-tab-item layui-show">
+                <div class="layui-container ">
+                    <div class="layui-row">
+                        <div class="layui-col-xs10" style=" margin: 30px 0px 20px 130px;" id="WeTabTip1">
+                            <button class="layui-btn search-btn" style="height: 34px;" ><i class="layui-icon"></i></button>
+                            <input type="text" name="keyword" id="keywordId" style="float: left;" placeholder="输入关键信息" autocomplete="off" class="layui-input keyword">
+                        </div>
+                        <div class="layui-col-xs12">
+                            <div class="grid-demo grid-demo-bg1" style="background-color: red">
+                                <div id="sj-gjsy" class="sy clearfix" _s_nav="sj-gjsy">
+                                    <dl class="clearfix">
+                                        <dt><span>类型:&nbsp;</span></dt>
+                                        <dd><a href=""  class="on">全部</a></dd>
+
+                                        <dd><a href="#">剧情</a></dd>
+
+                                        <dd><a href="#">动作</a></dd>
+
+                                        <dd><a href="#">喜剧</a></dd>
+
+                                        <dd><a href="#">爱情</a></dd>
+
+                                        <dd><a href="#">犯罪</a></dd>
+
+                                        <dd><a href="#">恐怖</a></dd>
+
+                                        <dd><a href="#">惊悚</a></dd>
+
+                                        <dd><a href="#">科幻</a></dd>
+
+                                        <dd><a href="#">奇幻</a></dd>
+
+                                        <dd><a href="#">战争</a></dd>
+
+                                        <dd><a href="#">悬疑</a></dd>
+
+                                        <dd><a href="#">历史</a></dd>
+
+                                        <dd><a href="#">文艺</a></dd>
+
+                                        <dd><a href="#">动画</a></dd>
+
+                                    </dl>
+                                    <dl class="clearfix">
+                                        <dt><span>年代:&nbsp;</span></dt>
+                                        <dd><a href="#" class="on">全部</a></dd>
+
+                                        <dd><a href="#">2020
+                                        </a></dd>
+
+                                        <dd><a href="#">2019
+                                        </a></dd>
+
+                                        <dd><a href="#">2018
+                                        </a></dd>
+
+                                        <dd><a href="#">2017
+                                        </a></dd>
+
+                                        <dd><a href="#">2016
+                                        </a></dd>
+
+                                        <dd><a href="#">2015
+                                        </a></dd>
+
+                                        <dd><a href="#">2014
+                                        </a></dd>
+
+                                        <dd><a href="#">2013
+                                        </a></dd>
+
+                                        <dd><a href="#">2012
+                                        </a></dd>
+
+                                        <dd><a href="#">2011
+                                        </a></dd>
+
+                                        <dd><a href="#">2010
+                                        </a></dd>
+
+                                        <dd><a href="#">2009
+                                        </a></dd>
+
+                                        <dd><a href="#">2008
+                                        </a></dd>
+
+                                    </dl>
+                                    <dl class="clearfix">
+                                        <dt><span>地区:&nbsp;</span></dt>
+                                        <dd><a href="#" class="on">全部</a></dd>
+
+                                        <dd><a href="#">内地
+                                        </a></dd>
+
+                                        <dd><a href="#">香港
+                                        </a></dd>
+
+                                        <dd><a href="#">台湾
+                                        </a></dd>
+
+                                        <dd><a href="#">韩国
+                                        </a></dd>
+
+                                        <dd><a href="#">日本
+                                        </a></dd>
+
+                                        <dd><a href="#">泰国
+                                        </a></dd>
+
+                                        <dd><a href="#">俄罗斯
+                                        </a></dd>
+
+                                        <dd><a href="#">美国
+                                        </a></dd>
+
+                                        <dd><a href="#">英国
+                                        </a></dd>
+
+                                        <dd><a href="#">其他
+                                        </a></dd>
+
+                                    </dl>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                        <div class="layui-col-xs12" style="margin-bottom: 60px">
+                            <div class="index-area clearfix">
+                                <ul id="file-list">
+
+
+                                    <div class="qcontainer ">
+                                        <div class="film">
+                                            <div class="face front">
+                                                <li class="p1 MPli"><a class="link-hover" target="_blank"
+                                                                       href="/?m=vod-play-id-15353-src-1-num-1.html"
+                                                                       title="死亡繁殖"><img class="lazy"
+                                                                                         data-original="https://p.ssl.qhimg.com/d/dy_b295c9b873a2d5f8c49eaa70b139555f.jpg"
+                                                                                         src="https://p.ssl.qhimg.com/d/dy_b295c9b873a2d5f8c49eaa70b139555f.jpg"
+                                                                                         alt="死亡繁殖"
+                                                                                         style="display: inline;">
+                                                    <span class="index5njcom title5nj">
+						<i>死亡繁殖</i>
+					</span>
+                                                    <p class="other">
+                                                        <i>10.0分 </i>
+                                                    </p>
+                                                </a>
+                                                </li>
+                                            </div>
+                                            <div class="face back">
+                                                <li class="p1 MPli"><a class="link-hover" target="_blank"
+                                                                       href="/?m=vod-play-id-15353-src-1-num-1.html"
+                                                                       title="死亡繁殖"><img class="lazy"
+                                                                                         data-original="https://p.ssl.qhimg.com/d/dy_b295c9b873a2d5f8c49eaa70b139555f.jpg"
+                                                                                         src="https://p.ssl.qhimg.com/d/dy_b295c9b873a2d5f8c49eaa70b139555f.jpg"
+                                                                                         alt="死亡繁殖"
+                                                                                         style="display: inline;">
+                                                    <span class="video-bg"></span><span class="lzbz">
+								<p class="name">
+									死亡繁殖
+								</p>
+								<p class="actor">
+									内森·菲利普斯 雷·沃纳尔 BilleBrown PeterDocker BrendanDonoghue NathanPhillips MirrahFoulkes
+								</p>
+								<p class="actor">
+									电影馆
+								</p>
+								<p class="actor">
+									2008/澳大利亚
+								</p>
+								</span>
+                                                    <p class="other">
+                                                        <i></i>
+                                                    </p>
+                                                </a>
+                                                </li>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="qcontainer ">
+                                        <div class="film">
+                                            <div class="face front">
+                                                <li class="p1 MPli"><a class="link-hover" target="_blank"
+                                                                       href="/?m=vod-play-id-138938-src-1-num-1.html"
+                                                                       title="杀戮部队"><img class="lazy"
+                                                                                         data-original="http://pic.yc370.com/upload/vod/2019-10-25/15719675071.jpg"
+                                                                                         src="http://pic.yc370.com/upload/vod/2019-10-25/15719675071.jpg"
+                                                                                         alt="杀戮部队"
+                                                                                         style="display: inline;">
+                                                    <span class="index5njcom title5nj">
+						<i>杀戮部队</i>
+					</span>
+                                                    <p class="other">
+                                                        <i>3.3分 </i>
+                                                    </p>
+                                                </a>
+                                                </li>
+                                            </div>
+                                            <div class="face back">
+                                                <li class="p1 MPli"><a class="link-hover" target="_blank"
+                                                                       href="/?m=vod-play-id-138938-src-1-num-1.html"
+                                                                       title="杀戮部队"><img class="lazy"
+                                                                                         data-original="http://pic.yc370.com/upload/vod/2019-10-25/15719675071.jpg"
+                                                                                         src="http://pic.yc370.com/upload/vod/2019-10-25/15719675071.jpg"
+                                                                                         alt="杀戮部队"
+                                                                                         style="display: inline;">
+                                                    <span class="video-bg"></span><span class="lzbz">
+								<p class="name">
+									杀戮部队
+								</p>
+								<p class="actor">
+									亚历山大·斯卡斯加德,纳特·沃尔夫,乔纳森·怀特赛尔,奥赛·伊克希尔
+								</p>
+								<p class="actor">
+									电影馆
+								</p>
+								<p class="actor">
+									2019/美国
+								</p>
+								</span>
+                                                    <p class="other">
+                                                        <i></i>
+                                                    </p>
+                                                </a>
+                                                </li>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="qcontainer ">
+                                        <div class="film">
+                                            <div class="face front">
+                                                <li class="p1 MPli"><a class="link-hover" target="_blank"
+                                                                       href="/?m=vod-play-id-153728-src-1-num-1.html"
+                                                                       title="小可耐电影说"><img class="lazy"
+                                                                                           data-original="///4img.hitv.com/preview/internettv/sp_images/ott/2020/4/15/dianying/337928/20200415102954906-new.jpg"
+                                                                                           src="///4img.hitv.com/preview/internettv/sp_images/ott/2020/4/15/dianying/337928/20200415102954906-new.jpg"
+                                                                                           alt="小可耐电影说"
+                                                                                           style="display: inline;">
+                                                    <span class="index5njcom title5nj">
+						<i>小可耐电影说</i>
+					</span>
+                                                    <p class="other">
+                                                        <i>10.0分 </i>
+                                                    </p>
+                                                </a>
+                                                </li>
+                                            </div>
+                                            <div class="face back">
+                                                <li class="p1 MPli"><a class="link-hover" target="_blank"
+                                                                       href="/?m=vod-play-id-153728-src-1-num-1.html"
+                                                                       title="小可耐电影说"><img class="lazy"
+                                                                                           data-original="///4img.hitv.com/preview/internettv/sp_images/ott/2020/4/15/dianying/337928/20200415102954906-new.jpg"
+                                                                                           src="///4img.hitv.com/preview/internettv/sp_images/ott/2020/4/15/dianying/337928/20200415102954906-new.jpg"
+                                                                                           alt="小可耐电影说"
+                                                                                           style="display: inline;">
+                                                    <span class="video-bg"></span><span class="lzbz">
+								<p class="name">
+									小可耐电影说
+								</p>
+								<p class="actor">
+
+								</p>
+								<p class="actor">
+									电影馆
+								</p>
+								<p class="actor">
+									未知/其他
+								</p>
+								</span>
+                                                    <p class="other">
+                                                        <i></i>
+                                                    </p>
+                                                </a>
+                                                </li>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="qcontainer ">
+                                        <div class="film">
+                                            <div class="face front">
+                                                <li class="p1 MPli"><a class="link-hover" target="_blank"
+                                                                       href="/?m=vod-play-id-153727-src-1-num-1.html"
+                                                                       title="咒怨新娘"><img class="lazy"
+                                                                                         data-original="http://pic.yc370.com/upload/vod/2020-04-16/202004161587027583.png"
+                                                                                         src="http://pic.yc370.com/upload/vod/2020-04-16/202004161587027583.png"
+                                                                                         alt="咒怨新娘"
+                                                                                         style="display: inline;">
+                                                    <span class="index5njcom title5nj">
+						<i>咒怨新娘</i>
+					</span>
+                                                    <p class="other">
+                                                        <i>10.0分 </i>
+                                                    </p>
+                                                </a>
+                                                </li>
+                                            </div>
+                                            <div class="face back">
+                                                <li class="p1 MPli"><a class="link-hover" target="_blank"
+                                                                       href="/?m=vod-play-id-153727-src-1-num-1.html"
+                                                                       title="咒怨新娘"><img class="lazy"
+                                                                                         data-original="http://pic.yc370.com/upload/vod/2020-04-16/202004161587027583.png"
+                                                                                         src="http://pic.yc370.com/upload/vod/2020-04-16/202004161587027583.png"
+                                                                                         alt="咒怨新娘"
+                                                                                         style="display: inline;">
+                                                    <span class="video-bg"></span><span class="lzbz">
+								<p class="name">
+									咒怨新娘
+								</p>
+								<p class="actor">
+									王艺曈,刘淼淼,王峥,姚懿宸
+								</p>
+								<p class="actor">
+									电影馆
+								</p>
+								<p class="actor">
+									2011/内地
+								</p>
+								</span>
+                                                    <p class="other">
+                                                        <i></i>
+                                                    </p>
+                                                </a>
+                                                </li>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-content-bg"></div>
+<!-- 右侧主体结束 -->
+<!-- 中部结束 -->
+<!-- 底部开始 -->
+<div th:replace="systemsite/m2/pages/common/sys_copyright_m2"></div>
+</body>
+
+<!--*********************魔板部分**end************************-->
+
+
+<div th:replace="systemsite/m1/pages/common/sys_footer_m1 :: sys_footer"></div>
+
+<!-- 底部结束 -->
+<script type="text/javascript">
+    //			layui扩展模块的两种加载方式-示例
+    layui.extend({
+        admin: '../../../systemsite/assets/static/js/admin-car-simple' // {/}的意思即代表采用自有路径，即不跟随 base 路径
+    });
+    //使用拓展模块。。
+    layui.use('admin', function () {
+        var admin = layui.admin;
+    });
+    layui.config({
+        base: '../../../systemsite/assets/static/js/'
+        , version: '101100'
+    }).use('admin');
+    layui.use(['jquery', 'admin'], function () {
+        var $ = layui.jquery;
+        var hrefUrl = window.location.href;
+        if (hrefUrl.indexOf("page/car/search") > -1) {
+            $("#item2").addClass("layui-this");
+        }
+
+        /**
+         * 搜索方法
+         * @param searchKey
+         */
+        function search(searchKey){
+            //选中的数组
+            var arr=[];
+            $("#sj-gjsy").find(".on").each(function () {
+                arr.push($.trim($(this).text()))
+            })
+            //cate
+            var cate=arr[0]=="全部"?"":arr[0];
+            //pubdate
+            var year=arr[1]=="全部"?"":arr[1];
+            //city
+            var city=arr[2]=="全部"?"":arr[2];
+
+            system.post("/solr/solrMoviesS",{type:4,title:searchKey,cate:cate,pubdate:year,city:city},function(data){
+                if(data.code=="200"){
+                    $("#file-list").html("");
+                    console.log(data);
+                    var items= $("#file-list");
+                    for(var m in data.result.dataList){
+                        var domain=data.result.dataList[m];
+                        system.cache[domain.id+""]=domain;
+
+                        //todo 仅供演示使用，不建议此方式写
+                            items.append('<div class="qcontainer " style="margin: 10px 20px">' +
+                                '<div class="film"><div class="face back">' +
+                                '<li class="p1 MPli"><a class="link-hover" target="_blank" data-id="'+domain.id+'"  title="'+domain.title+'">' +
+                                '<img class="lazy" data-original="///api.97bike.com/pic.php?url=https://pic7.iqiyipic.com/image/20200416/47/28/v_145917670_m_601_m3.jpg"' +
+                                'src="'+domain.imgUrl+'" alt="#" style="display: inline;"> <span class="video-bg"></span><span class="lzbz">' +
+                                '<p class="name">'+domain.title+'</p>' +
+                                '<p class="actor">'+domain.role+'</p>' +
+                                '<p class="actor">'+domain.cate+'</p>' +
+                                '<p class="actor">'+domain.city+'</p>' +
+                                '</span><p class="other"><i></i></p></a></li></div></div></div>');
+
+                    }
+                }
+            })
+        }
+         search("青春");
+         function tipContent(id) {
+            system.tip("2432fdsafdsafdsa",1);
+         }
+
+        //监控按键
+        $(document).keypress(function(e) {
+            //当前搜索
+            var  skeyNow=$("#keywordId").val();
+            if(e.which == 13) {
+                if(skey!=skeyNow){
+                    search(skeyNow);
+                }
+            }
+
+        });
+        //点击li操作
+        $("#file-list").LPClickDelegate("a",function(){
+            var id=$(this).attr("data-id");
+            system.tip(system.cache[id].intro,1);
+
+        })
+        $("#sj-gjsy").LPClickDelegate("dd",function(){
+            var con=$(this).text();
+
+            //去除其他的选中状态
+            $(this).parent().find("a").each(function(){
+                $(this).removeClass("on")
+            })
+            //设为现在的选中状态
+            var con=$(this).find("a").addClass("on");
+
+
+
+            //
+
+            var searchKey=$("#keywordId").val();
+            search(searchKey);
+
+        })
+
+        /**
+         * 点击搜索电影
+         */
+        $("#WeTabTip1").LPClickDelegate(".search-btn",function(){
+            var searchKey=$("#keywordId").val();
+            search(searchKey);
+        })
+
+    });
+
+</script>
+</html>

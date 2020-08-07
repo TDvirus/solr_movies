@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.limp.framework.boss.mapper.oracle.SolrMoviesMapper" >
+  <resultMap id="BaseResultMap" type="com.limp.framework.boss.domain.SolrMovies" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="IMG_URL" property="imgUrl" jdbcType="VARCHAR" />
+    <result column="URL" property="url" jdbcType="VARCHAR" />
+    <result column="INTRO" property="intro" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="PUBDATE" property="pubdate" jdbcType="VARCHAR" />
+    <result column="CATE" property="cate" jdbcType="VARCHAR" />
+    <result column="PRODUCER" property="producer" jdbcType="VARCHAR" />
+    <result column="ROLE" property="role" jdbcType="VARCHAR" />
+    <result column="READ_NUM" property="readNum" jdbcType="INTEGER" />
+    <result column="MV_TYPE" property="mvType" jdbcType="VARCHAR" />
+    <result column="MV_TAG" property="mvTag" jdbcType="VARCHAR" />
+    <result column="IDT" property="idt" jdbcType="TIMESTAMP" />
+    <result column="RC4" property="rc4" jdbcType="VARCHAR" />
+    <result column="RC1" property="rc1" jdbcType="VARCHAR" />
+    <result column="RC2" property="rc2" jdbcType="VARCHAR" />
+    <result column="RC3" property="rc3" jdbcType="VARCHAR" />
+    <result column="UDT" property="udt" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, TITLE, IMG_URL, URL, INTRO, CITY, PUBDATE, CATE, PRODUCER, ROLE, READ_NUM, MV_TYPE, 
+    MV_TAG, IDT, RC4, RC1, RC2, RC3, UDT
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.limp.framework.boss.domain.SolrMoviesExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from test_solr_movies
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from test_solr_movies
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from test_solr_movies
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.limp.framework.boss.domain.SolrMoviesExample" >
+    delete from test_solr_movies
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.limp.framework.boss.domain.SolrMovies" >
+    insert into test_solr_movies (ID, TITLE, IMG_URL, 
+      URL, INTRO, CITY, PUBDATE, 
+      CATE, PRODUCER, ROLE, 
+      READ_NUM, MV_TYPE, MV_TAG, 
+      IDT, RC4, RC1, RC2, 
+      RC3, UDT)
+    values (#{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{imgUrl,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{pubdate,jdbcType=VARCHAR}, 
+      #{cate,jdbcType=VARCHAR}, #{producer,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, 
+      #{readNum,jdbcType=INTEGER}, #{mvType,jdbcType=VARCHAR}, #{mvTag,jdbcType=VARCHAR}, 
+      #{idt,jdbcType=TIMESTAMP}, #{rc4,jdbcType=VARCHAR}, #{rc1,jdbcType=VARCHAR}, #{rc2,jdbcType=VARCHAR}, 
+      #{rc3,jdbcType=VARCHAR}, #{udt,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.limp.framework.boss.domain.SolrMovies" >
+    insert into test_solr_movies
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="imgUrl != null" >
+        IMG_URL,
+      </if>
+      <if test="url != null" >
+        URL,
+      </if>
+      <if test="intro != null" >
+        INTRO,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="pubdate != null" >
+        PUBDATE,
+      </if>
+      <if test="cate != null" >
+        CATE,
+      </if>
+      <if test="producer != null" >
+        PRODUCER,
+      </if>
+      <if test="role != null" >
+        ROLE,
+      </if>
+      <if test="readNum != null" >
+        READ_NUM,
+      </if>
+      <if test="mvType != null" >
+        MV_TYPE,
+      </if>
+      <if test="mvTag != null" >
+        MV_TAG,
+      </if>
+      <if test="idt != null" >
+        IDT,
+      </if>
+      <if test="rc4 != null" >
+        RC4,
+      </if>
+      <if test="rc1 != null" >
+        RC1,
+      </if>
+      <if test="rc2 != null" >
+        RC2,
+      </if>
+      <if test="rc3 != null" >
+        RC3,
+      </if>
+      <if test="udt != null" >
+        UDT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null" >
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null" >
+        #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="pubdate != null" >
+        #{pubdate,jdbcType=VARCHAR},
+      </if>
+      <if test="cate != null" >
+        #{cate,jdbcType=VARCHAR},
+      </if>
+      <if test="producer != null" >
+        #{producer,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="readNum != null" >
+        #{readNum,jdbcType=INTEGER},
+      </if>
+      <if test="mvType != null" >
+        #{mvType,jdbcType=VARCHAR},
+      </if>
+      <if test="mvTag != null" >
+        #{mvTag,jdbcType=VARCHAR},
+      </if>
+      <if test="idt != null" >
+        #{idt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rc4 != null" >
+        #{rc4,jdbcType=VARCHAR},
+      </if>
+      <if test="rc1 != null" >
+        #{rc1,jdbcType=VARCHAR},
+      </if>
+      <if test="rc2 != null" >
+        #{rc2,jdbcType=VARCHAR},
+      </if>
+      <if test="rc3 != null" >
+        #{rc3,jdbcType=VARCHAR},
+      </if>
+      <if test="udt != null" >
+        #{udt,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.limp.framework.boss.domain.SolrMoviesExample" resultType="java.lang.Integer" >
+    select count(*) from test_solr_movies
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update test_solr_movies
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null" >
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgUrl != null" >
+        IMG_URL = #{record.imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null" >
+        URL = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.intro != null" >
+        INTRO = #{record.intro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null" >
+        CITY = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pubdate != null" >
+        PUBDATE = #{record.pubdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cate != null" >
+        CATE = #{record.cate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.producer != null" >
+        PRODUCER = #{record.producer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.role != null" >
+        ROLE = #{record.role,jdbcType=VARCHAR},
+      </if>
+      <if test="record.readNum != null" >
+        READ_NUM = #{record.readNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.mvType != null" >
+        MV_TYPE = #{record.mvType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mvTag != null" >
+        MV_TAG = #{record.mvTag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idt != null" >
+        IDT = #{record.idt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rc4 != null" >
+        RC4 = #{record.rc4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc1 != null" >
+        RC1 = #{record.rc1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc2 != null" >
+        RC2 = #{record.rc2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc3 != null" >
+        RC3 = #{record.rc3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.udt != null" >
+        UDT = #{record.udt,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update test_solr_movies
+    set ID = #{record.id,jdbcType=VARCHAR},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      IMG_URL = #{record.imgUrl,jdbcType=VARCHAR},
+      URL = #{record.url,jdbcType=VARCHAR},
+      INTRO = #{record.intro,jdbcType=VARCHAR},
+      CITY = #{record.city,jdbcType=VARCHAR},
+      PUBDATE = #{record.pubdate,jdbcType=VARCHAR},
+      CATE = #{record.cate,jdbcType=VARCHAR},
+      PRODUCER = #{record.producer,jdbcType=VARCHAR},
+      ROLE = #{record.role,jdbcType=VARCHAR},
+      READ_NUM = #{record.readNum,jdbcType=INTEGER},
+      MV_TYPE = #{record.mvType,jdbcType=VARCHAR},
+      MV_TAG = #{record.mvTag,jdbcType=VARCHAR},
+      IDT = #{record.idt,jdbcType=TIMESTAMP},
+      RC4 = #{record.rc4,jdbcType=VARCHAR},
+      RC1 = #{record.rc1,jdbcType=VARCHAR},
+      RC2 = #{record.rc2,jdbcType=VARCHAR},
+      RC3 = #{record.rc3,jdbcType=VARCHAR},
+      UDT = #{record.udt,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.limp.framework.boss.domain.SolrMovies" >
+    update test_solr_movies
+    <set >
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null" >
+        IMG_URL = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        URL = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null" >
+        INTRO = #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="pubdate != null" >
+        PUBDATE = #{pubdate,jdbcType=VARCHAR},
+      </if>
+      <if test="cate != null" >
+        CATE = #{cate,jdbcType=VARCHAR},
+      </if>
+      <if test="producer != null" >
+        PRODUCER = #{producer,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        ROLE = #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="readNum != null" >
+        READ_NUM = #{readNum,jdbcType=INTEGER},
+      </if>
+      <if test="mvType != null" >
+        MV_TYPE = #{mvType,jdbcType=VARCHAR},
+      </if>
+      <if test="mvTag != null" >
+        MV_TAG = #{mvTag,jdbcType=VARCHAR},
+      </if>
+      <if test="idt != null" >
+        IDT = #{idt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rc4 != null" >
+        RC4 = #{rc4,jdbcType=VARCHAR},
+      </if>
+      <if test="rc1 != null" >
+        RC1 = #{rc1,jdbcType=VARCHAR},
+      </if>
+      <if test="rc2 != null" >
+        RC2 = #{rc2,jdbcType=VARCHAR},
+      </if>
+      <if test="rc3 != null" >
+        RC3 = #{rc3,jdbcType=VARCHAR},
+      </if>
+      <if test="udt != null" >
+        UDT = #{udt,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.limp.framework.boss.domain.SolrMovies" >
+    update test_solr_movies
+    set TITLE = #{title,jdbcType=VARCHAR},
+      IMG_URL = #{imgUrl,jdbcType=VARCHAR},
+      URL = #{url,jdbcType=VARCHAR},
+      INTRO = #{intro,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      PUBDATE = #{pubdate,jdbcType=VARCHAR},
+      CATE = #{cate,jdbcType=VARCHAR},
+      PRODUCER = #{producer,jdbcType=VARCHAR},
+      ROLE = #{role,jdbcType=VARCHAR},
+      READ_NUM = #{readNum,jdbcType=INTEGER},
+      MV_TYPE = #{mvType,jdbcType=VARCHAR},
+      MV_TAG = #{mvTag,jdbcType=VARCHAR},
+      IDT = #{idt,jdbcType=TIMESTAMP},
+      RC4 = #{rc4,jdbcType=VARCHAR},
+      RC1 = #{rc1,jdbcType=VARCHAR},
+      RC2 = #{rc2,jdbcType=VARCHAR},
+      RC3 = #{rc3,jdbcType=VARCHAR},
+      UDT = #{udt,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select row_.* from (
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_  LIMIT  #{page.start} , #{page.rows} ]]>
+    </if>
+  </sql>
+</mapper>
