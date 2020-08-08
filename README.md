@@ -1,4 +1,5 @@
 # solr_movies
+<<<<<<< HEAD
 一个由spring cloud搭建的solr电影检索项目。
 
 ***
@@ -18,3 +19,6 @@ idea-2019.1.4
 ### 检索展示：
 ![检索结果](https://github.com/TDvirus/solr_movies/blob/master/pic/%E6%88%AA%E5%9B%BE02.png)
 ![检索结果](https://github.com/TDvirus/solr_movies/blob/master/pic/%E6%88%AA%E5%9B%BE03.png)
+=======
+一个由spring cloud搭建的solr电影检索项目
+>>>>>>> 57aa594b92d374e88c77a0450bda3ee66eb8bbfe
