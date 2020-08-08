@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/systemsite/assets/static/css/font.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/systemsite/assets/static/css/limpframwork-car.css}"/>
+    <!--注意需要用双标签进行闭合，即用一对<script></script>-->
+    <script  th:src="@{/systemsite/assets/lib/layui/layui.js}"></script>
+
+</head>
+<div class="container">
+
+    <!--   <div class="left_open">
+           <i title="展开左侧栏" class="iconfont">&#xe699;</i>
+       </div>-->
+    <ul class="layui-nav left fast-add" lay-filter="">
+        <!--<li class="layui-nav-item">
+            <a href="javascript:;">+新增</a>
+            <dl class="layui-nav-child">
+                &lt;!&ndash; 二级菜单 &ndash;&gt;
+                <dd>
+                    <a onclick="WeAdminShow('资讯','https://www.youfa365.com/')"><i class="iconfont">&#xe6a2;</i>资讯</a>
+                </dd>
+                <dd>
+                    <a onclick="WeAdminShow('图片','https://www.youfa365.com/')"><i class="iconfont">&#xe6a8;</i>图片</a>
+                </dd>
+                <dd>
+                    <a onclick="WeAdminShow('用户','https://www.youfa365.com/')"><i class="iconfont">&#xe6b8;</i>用户</a>
+                </dd>
+            </dl>
+        </li>-->
+    </ul>
+    <ul class="layui-nav right" lay-filter="">
+        <li class="layui-nav-item " style="color: #F0811C;">
+            你好,admin
+        </li>
+        <li class="layui-nav-item to-index">
+            <a href="/logout">|&nbsp;&nbsp;&nbsp;退出</a>
+        </li>
+
+
+        <li class="layui-nav-item">
+            <a href="javascript:;">|&nbsp;&nbsp;&nbsp;个人中心</a>
+            <dl class="layui-nav-child">
+                <!-- 二级菜单 -->
+
+                <dd>
+                    <a href="#">账户管理</a>
+                </dd>
+                <dd>
+                    <a class="loginout" href="/logout">退出</a>
+                </dd>
+            </dl>
+        </li>
+
+    </ul>
+</div>

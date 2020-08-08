@@ -1,0 +1,100 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" style="min-width: 1250px;">
+<head th:replace="systemsite/m2/pages/common/sys_header_m2 :: sys_header(~{::title},~{},~{})">
+    <title>登录页面</title>
+    <!--<link rel="stylesheet" type="text/css" th:href="@{/systemsite/assets/static/css/font.css}"/>-->
+    <meta name="renderer" content="webkit">
+</head>
+
+<body class="login-bg">
+    
+    <div class="login">
+        <!--<div class="message">[[#{app.name}]]</div>-->
+        <!--<div id="darkbannerwrap"></div>-->
+        <form method="post" class="layui-form" >
+            <input name="account" id="account" th:placeholder="#{login.username}" value="dayou_1" type="text" lay-verify="required" class="layui-input" >
+            <hr class="hr15">
+            <input name="password" id="password" lay-verify="required" value="20191231" placeholder="密码"  type="password" class="layui-input">
+           <div>
+               <div class="show-box"></div>
+               <div class="savepwd">记住我</div>
+               <input name="rememberme" value="" id="savepwd" type="hidden"/>
+           </div>
+            <hr class="hr15">
+            <input class="loginin" th:value="#{login.btn}" value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
+            <hr class="hr20" >
+            <div>
+            	<!--请用测试账号登陆 (datacenter/123456)-->
+            </div>
+        </form>
+    </div>
+
+    <div th:replace="systemsite/m1/pages/common/sys_footer_m1 :: sys_footer"></div>
+    <script  th:src="@{/systemsite/assets/lib/layui/layui.js}"></script>
+
+    <script type="text/javascript">
+        
+        	layui.extend({
+				admin: '{/}../../../systemsite/assets/static/js/admin'
+			});
+            layui.use(['form','admin'], function(){
+              var form = layui.form
+              	,admin = layui.admin;
+                $(document).off("click",".show-box").delegate(".show-box","click",function(){
+
+//                $(".show-box").click(function(){
+                  console.log($(this).hasClass("login-check"));
+                  if($(this).hasClass("login-check")){
+                      $(this).removeClass("login-check");
+                      $("#savepwd").val(0)
+                  }else{
+                      $(this).addClass("login-check");
+                      $("#savepwd").val(1)
+
+                  }
+              })
+              //监听提交
+              form.on('submit(login)', function(data){
+                console.log(data.field);
+                  var params=data.field;
+                  params['type']=4;
+                  system.post("/system/user/login",params,function(data){
+                      console.log(data)
+                      if(data.code=="200"){
+                          if (data.result.type == "1") {
+                              window.location.href = "/page/car/search";
+                          } else {
+                              window.location.href = data.result.url;
+
+                          }
+//                          window.location.href = data.result.url;
+                      }else{
+                          system.tip(data.msg,"0");
+                      }
+                  })
+                return false;
+              });
+
+
+                   system.post("/system/user/init",{type:1},function(data){
+                       console.log(data);
+                       if(!system.isBlank(data.result.account)){
+                           $("#account").val(data.result.account);
+                           $("#password").val(data.result.password);
+                           $("#savepwd").val(1);
+                           $(".show-box").addClass("login-check");
+                       }
+                       console.log(data)
+                   })
+            });
+
+            $(document).keypress(function(e) {
+                // 回车键事件
+                if(e.which == 13) {
+                     $(".loginin").click();
+                }
+            });
+    </script>  
+    <!-- 底部结束 -->
+</body>
+</html>
